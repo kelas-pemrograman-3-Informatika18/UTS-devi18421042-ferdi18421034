@@ -15,6 +15,7 @@
       class="q-gutter-md"
     >
       <q-input
+        q-icon="people"
         filled
         v-model="name"
         label="Username *"
@@ -22,23 +23,37 @@
         bg-color="white"
         lazy-rules
         :rules="[ val => val && val.length > 0 || 'wajib di isi']"
-      />
+      >
+      <template v-slot:prepend>
+        <q-icon name="person" />
+      </template>
+      </q-input>
+
       <q-input
-        filled
-        type="password"
         v-model="password"
-        label="Your Password *"
+        label="Password *"
         label-color="orange"
         bg-color="white"
-        lazy-rules
-        :rules="[ val => val && val.length > 0 || 'wajib di isi']"
-      />
+        lazy-rules :rules="[ val => val && val.length > 0 || 'wajib di isi']"
+        filled :type="isPwd ? 'password' : 'text'">
+      <template v-slot:prepend>
+        <q-icon name="vpn_key" />
+      </template>
+      <template v-slot:append>
+        <q-icon
+          :name="isPwd ? 'visibility_off' : 'visibility'"
+          class="cursor-pointer"
+          @click="isPwd = !isPwd"
+        />
+      </template>
+      </q-input>
 
       <div>
         <div class="q-pa-md q-gutter-y-sm" align="center">
         <q-btn label="login" type="login" color="indigo-8" />
         <q-btn to="registerr" label="register" type="register" color="white" flat class="q-ml-sm"/>
         <q-btn label="Reset" type="reset" color="white" flat class="q-ml-sm" />
+        <q-btn to="/loginadmin" label="Admin" color="white" flat class="q-ml-sm" />
         </div>
       </div>
     </q-form>
@@ -51,24 +66,26 @@ export default {
   data () {
     return {
       name: null,
-      password: null
+      password: null,
+      isPwd: true
 
     }
   },
   methods: {
     onSubmit () {
-      if (this.name === 'vidi' && this.password === '2122') {
-        this.$q.notify({
-          type: 'positive',
-          message: 'selamat login berhasil'
-        })
-        this.$router.push('/home')
-      } else {
-        this.$q.notify({
-          type: 'negative',
-          message: 'gagal login, username / password salah'
-        })
-      }
+      this.$axios.post('/user/login', {
+        name: this.name,
+        password: this.password
+      }).then(res => {
+        if (res.data.sukses) {
+          this.$router.push({ name: 'homeusr' })
+        } else {
+          this.$q.notify({
+            type: 'negative',
+            message: res.data.pesan
+          })
+        }
+      })
     },
     onReset () {
       this.name = null

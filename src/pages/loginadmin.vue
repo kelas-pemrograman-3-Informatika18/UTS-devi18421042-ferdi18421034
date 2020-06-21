@@ -2,18 +2,27 @@
   <q-page class="bg-black">
     <div class="row">
       <q-card class="fixed-center col-md-4 col-xs-12 bg-orange" flat>
+        <div class="q-pa-md q-gutter-y-sm" align="center">
+        <q-toolbar class="bg-indigo-8 text-white" >
+        <q-toolbar-title>
+        ADMIN SILAHKAN LOGIN
+        </q-toolbar-title>
+        </q-toolbar>
+        </div>
    <q-form
       @submit="onSubmit"
       @reset="onReset"
       class="q-gutter-md"
     >
       <q-input
+        q-icon="people"
         filled
-        v-model="name"
+        v-model="username"
         label="Username *"
         label-color="orange"
         bg-color="white"
-        lazy-rules :rules="[ val => val && val.length > 0 || 'wajib di isi']"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'wajib di isi']"
       >
       <template v-slot:prepend>
         <q-icon name="person" />
@@ -39,24 +48,11 @@
       </template>
       </q-input>
 
-      <q-input
-        filled
-        type="int"
-        v-model="gmail"
-        label="Gmail *"
-        label-color="orange"
-        bg-color="white"
-        lazy-rules :rules="[val => val && val.length > 0 || 'wajib di isi']"
-      >
-      <template v-slot:prepend>
-        <q-icon name="email" />
-      </template>
-      </q-input>
-
       <div>
-        <q-btn label="Register" type="submit" color="indigo-8"/>
-        <q-btn to="/"  label="Login" type="submit" color="white" flat class="q-ml-sm" />
+        <div class="q-pa-md q-gutter-y-sm" align="center">
+        <q-btn label="login" type="login" color="indigo-8" />
         <q-btn label="Reset" type="reset" color="white" flat class="q-ml-sm" />
+        </div>
       </div>
     </q-form>
       </q-card>
@@ -67,38 +63,31 @@
 export default {
   data () {
     return {
-      name: null,
+      username: null,
       password: null,
-      gmail: null,
       isPwd: true
 
     }
   },
   methods: {
     onSubmit () {
-      this.$axios.post('/user/registerr', {
-        name: this.name,
-        password: this.password,
-        gmail: this.gmail
-      }).then((res) => {
+      this.$axios.post('/admin/login', {
+        username: this.username,
+        password: this.password
+      }).then(res => {
         if (res.data.sukses) {
-          this.$q.notify({
-            type: 'positive',
-            message: res.data.pesan
-          })
-          this.$router.push({ name: 'loginuser' })
+          this.$router.push({ name: 'homeadmin' })
         } else {
           this.$q.notify({
-            type: 'positive',
+            type: 'negative',
             message: res.data.pesan
           })
         }
       })
     },
     onReset () {
-      this.name = null
+      this.username = null
       this.password = null
-      this.gmail = null
     }
   }
 }

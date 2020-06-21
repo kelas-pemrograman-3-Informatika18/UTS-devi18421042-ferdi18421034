@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     getData () {
-      this.$axios.get('pemesanan/tampilsingle/' + this.$route.params.id)
+      this.$axios.get('pemesanan2/tampilsingle/' + this.$route.params.id)
         .then(res => {
           const data = res.data
           this.rute = data.rute
@@ -45,7 +45,7 @@ export default {
         })
     },
     onSubmit () {
-      this.$axios.put('pemesanan/edit/' + this.$route.params.id, {
+      this.$axios.put('pemesanan2/edit/' + this.$route.params.id, {
         rute: this.rute,
         keberangkatan: this.keberangkatan,
         harga_tiket: this.harga_tiket,
