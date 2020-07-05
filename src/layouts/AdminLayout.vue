@@ -3,18 +3,10 @@
     <q-header class="bg-white text-black">
       <q-toolbar>
         <q-btn dense flat round @click="leftDrawerOpen = !leftDrawerOpen" icon="menu" />
-        <q-space></q-space>
         <q-toolbar-title>
           VIDI WEBSITE
         </q-toolbar-title>
-        <q-btn flat round>
-        <q-menu>
-          <q-list style="min-width: 100px">
-            <q-item to="/loginadmin" clickable v-close-popup>
-              <q-item-section>Logout</q-item-section>
-            </q-item>
-          </q-list>
-        </q-menu>
+        <q-btn @click="logout()" flat round label="Logout">
         </q-btn>
       </q-toolbar>
     </q-header>
@@ -37,7 +29,7 @@
           </div>
         </q-item>
 
-        <q-item clickable active-class="active" v-ripple exact :to="{ name: 'homeadmin' }">
+        <q-item clickable active-class="active" v-ripple exact :to="{ name: 'dashboardAdmin' }">
           <q-item-section avatar>
             <q-icon name="dashboard"/>
           </q-item-section>
@@ -45,44 +37,28 @@
             <q-item-label>Dashboard</q-item-label>
           </q-item-section>
         </q-item>
-         <q-item clickable active-class="active" :to="{ name: 'tableexecutive' }" exact>
+        <q-item clickable active-class="active" v-ripple exact :to="{ name: 'dataDamri' }">
           <q-item-section avatar>
-            <q-icon name="input"/>
+            <q-icon name="dashboard"/>
           </q-item-section>
           <q-item-section>
-            <q-item-label>Table Executive Class</q-item-label>
+            <q-item-label>Data Damri</q-item-label>
           </q-item-section>
         </q-item>
-         <q-item clickable active-class="active" :to="{ name: 'tablebusiness' }" exact>
+        <q-item clickable active-class="active" :to="{ name: 'inputDamri' }" exact>
           <q-item-section avatar>
             <q-icon name="input"/>
           </q-item-section>
           <q-item-section>
-            <q-item-label>Table Business Class</q-item-label>
+            <q-item-label>Input Damri</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable active-class="active" :to="{ name: 'inputRoyalClass' }" exact>
+        <q-item clickable active-class="active" :to="{ name: 'dataUser' }" exact>
           <q-item-section avatar>
-            <q-icon name="input"/>
+            <q-icon name="supervisor_account"/>
           </q-item-section>
           <q-item-section>
-            <q-item-label>Input Royal Class</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable active-class="active" :to="{ name: 'inputExecutiveClass' }" exact>
-          <q-item-section avatar>
-            <q-icon name="input"/>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Input Executive Class</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable active-class="active" :to="{ name: 'inputBusinessClass' }" exact>
-          <q-item-section avatar>
-            <q-icon name="input"/>
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Input Business Class</q-item-label>
+            <q-item-label>Data User</q-item-label>
           </q-item-section>
         </q-item>
     </q-list>
@@ -102,6 +78,12 @@ export default {
   data () {
     return {
       leftDrawerOpen: false
+    }
+  },
+  methods: {
+    logout () {
+      this.$q.localStorage.remove()
+      this.$router.push({ name: 'loginPage' })
     }
   }
 }

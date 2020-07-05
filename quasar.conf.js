@@ -15,7 +15,8 @@ module.exports = function (/* ctx */) {
     boot: [
 
       'i18n',
-      'axios'
+      'axios',
+      'showNotif'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -84,7 +85,16 @@ module.exports = function (/* ctx */) {
         'QAvatar',
         'QSeparator',
         'QFooter',
-        'QFile'
+        'QFile',
+        'QSeparator',
+        'QSelect',
+        'QSlideTransition',
+        'QRating',
+        'QMenu',
+        'QScrollArea',
+        'QSpace',
+        'QBanner',
+        'QBadge'
       ],
 
       directives: [
@@ -95,7 +105,8 @@ module.exports = function (/* ctx */) {
       // Quasar plugins
       plugins: [
         'Notify',
-        'Dialog'
+        'Dialog',
+        'LocalStorage'
       ]
     },
 

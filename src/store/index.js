@@ -14,6 +14,8 @@ Vue.use(Vuex)
  * with the Store instance.
  */
 
+Vue.prototype.$baseImageURL = 'http://localhost:3000'
+
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
