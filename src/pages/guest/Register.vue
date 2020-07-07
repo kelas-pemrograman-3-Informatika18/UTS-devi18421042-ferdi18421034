@@ -14,32 +14,51 @@
                 <q-input
                   v-model="username"
                   label="Username"
+                  color="orange"
                   :rules="[
                     val => val && val.length > 0 || 'Ketikan Username'
-                  ]"
-                  />
+                  ]" >
+                  <template v-slot:prepend>
+                    <q-icon name="person" />
+                  </template>
+                </q-input>
+
                 <q-input
                   v-model="namaLengkap"
                   label="Nama Lengkap"
+                  color="orange"
                   :rules="[
                     val => val && val.length > 0 || 'Ketikan Nama Lengkap Anda'
-                  ]"
-                  />
+                  ]" >
+                  <template v-slot:prepend>
+                      <q-icon name="person" />
+                   </template>
+                </q-input>
+
                 <q-input
                   v-model="email"
                   label="Email"
+                  color="orange"
                   :rules="[
                     val => val && val.length > 0 || 'Ketikan Email Anda'
-                  ]"
-                  />
+                  ]" >
+                  <template v-slot:prepend>
+                    <q-icon name="mail" />
+                  </template>
+                </q-input>
+
                 <q-input
                  v-model="password"
                  label="Password"
                  type="password"
+                 color="orange"
                  :rules="[
                     val => val && val.length > 0 || 'Ketikan Password Anda'
-                  ]"
-                 />
+                  ]" >
+                  <template v-slot:prepend>
+                    <q-icon name="vpn_key"/>
+                  </template>
+                </q-input>
                  <div class="q-gutter-md">
                    <q-btn label="Register" type="submit" unelevated color="orange-7" />
                    <q-btn label="Login" :to="{ name: 'loginPage' }" unelevated color="orange-6" flat />

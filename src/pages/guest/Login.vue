@@ -22,8 +22,18 @@
                     @submit="login"
                   >
                     <q-card-section>
-                      <q-input v-model="username" label="Username"/>
-                      <q-input type="password" v-model="password" label="Password"/>
+                      <q-input
+                       v-model="username" color="orange" label="username">
+                       <template v-slot:prepend>
+                         <q-icon name="person" />
+                       </template>
+                      </q-input>
+
+                      <q-input type="password" color="orange" v-model="password" label="password">
+                        <template v-slot:prepend>
+                         <q-icon name="vpn_key" />
+                        </template>
+                      </q-input>
                     </q-card-section>
                     <q-card-section>
                       <q-btn class="full-width" type="submit" unelevated color="orange-6" label="Login" />

@@ -25,7 +25,7 @@
         <q-item class="justify-center text-center q-mb-md q-mt-md">
           <div>
             <q-avatar size="150px">
-              <img src="~assets/20200705_104139_0000.png">
+              <img src="~assets/20200707_114237_0000.png">
             </q-avatar>
             <div class="text-weight-bold q-mt-md">Devi dan Ferdi</div>
             <div>Web Penjualan Tiket Damri</div>

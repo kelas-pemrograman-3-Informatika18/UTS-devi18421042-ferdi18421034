@@ -15,14 +15,14 @@
       v-model="leftDrawerOpen"
       show-if-above
       :breakpoint="500"
-      content-class="text-white bg-indigo-8"
+      content-class="text-white bg-black"
     >
     <q-scroll-area class="fit">
       <q-list>
         <q-item class="justify-center text-center q-mb-md q-mt-md">
           <div>
             <q-avatar size="150px">
-              <img src="https://awsimages.detik.net.id/community/media/visual/2018/06/24/0ee8d90a-bb72-497b-aae3-c1f319ecc940_169.jpeg?w=780&q=90">
+              <img src="~assets/20200707_114237_0000.png">
             </q-avatar>
             <div class="text-weight-bold q-mt-md">Devi dan Ferdi</div>
             <div>Web Penjualan Tiket Damri</div>
@@ -39,7 +39,7 @@
         </q-item>
         <q-item clickable active-class="active" v-ripple exact :to="{ name: 'dataDamri' }">
           <q-item-section avatar>
-            <q-icon name="dashboard"/>
+            <q-icon name="directions_bus"/>
           </q-item-section>
           <q-item-section>
             <q-item-label>Data Damri</q-item-label>

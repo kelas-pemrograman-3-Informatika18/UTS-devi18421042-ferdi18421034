@@ -13,7 +13,7 @@
                     <div class="text-h5">About Vidi Website</div>
                     <q-card-section>
                       vidi website adalah aplikasi penjualan tiket damri berbasis web yang dibuat oleh Devi Anggraini.
-                      Aplikasi ini dibuat untuk mempermudah masyarakat dalam memesan tiket danri secara online.
+                      Aplikasi ini dibuat untuk mempermudah masyarakat dalam memesan tiket damri secara online.
                     </q-card-section>
                     <div class="q-mt-md">
                     <div class="text-h6">Contact Person :</div>
